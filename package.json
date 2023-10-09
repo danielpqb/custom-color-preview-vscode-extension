@@ -3,7 +3,7 @@
   "publisher": "danielpqb",
   "displayName": "CustomColorPreview",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "engines": {
     "vscode": "^1.83.0"
   },
@@ -37,11 +37,13 @@
     "eslint": "^8.50.0",
     "glob": "^10.3.3",
     "mocha": "^10.2.0",
-    "parse-css-color": "^0.2.1",
     "typescript": "^5.2.2"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/danielpqb/custom-color-preview-vscode-extension.git"
+  },
+  "dependencies": {
+    "parse-css-color": "^0.2.1"
   }
 }
