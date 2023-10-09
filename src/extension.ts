@@ -1,25 +1,29 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import { Picker } from "./helper";
+import { CONFIG_GLOB } from "./lib/constants";
+import { ExtensionContext, workspace as Workspace, Uri } from "vscode";
 
 // This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+export async function activate(context: ExtensionContext) {
+  const path = await Workspace.findFiles(
+    CONFIG_GLOB,
+    "**/{node_modules, out, dist}/**",
+    1
+  ).then((doc) => {
+    return doc[0].path;
+  });
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "custom-color-preview-vscode-extension" is now active!');
+  const uri = Uri.parse(path);
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('custom-color-preview-vscode-extension.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from CustomColorPreview!');
-	});
+  const customColors = await Workspace.openTextDocument(uri).then((obj) => {
+    return JSON.parse(obj.getText());
+  });
 
-	context.subscriptions.push(disposable);
+  const picker = new Picker(customColors);
+  context.subscriptions.push(picker);
+
+  console.log(
+    'Congratulations, your extension "custom-color-preview-vscode-extension" is now active!'
+  );
 }
 
 // This method is called when your extension is deactivated
