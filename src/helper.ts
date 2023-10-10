@@ -49,7 +49,7 @@ export class Matcher {
   static getMatches(text: string, customColors: object): Match[] {
     let colorKeys = [];
     for (const key in customColors) {
-      colorKeys.push(`(${key})`);
+      colorKeys.push(`${key}\\b`);
     }
     const regex = new RegExp(colorKeys.join("|"), "gi");
 
