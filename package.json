@@ -1,9 +1,9 @@
 {
-  "name": "custom-color-preview-vscode-extension",
+  "name": "global-style-colors",
   "publisher": "danielpqb",
-  "displayName": "CustomColorPreview",
+  "displayName": "GS Colors",
   "description": "",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "engines": {
     "vscode": "^1.83.0"
   },
@@ -17,7 +17,7 @@
   "main": "./out/extension.js",
   "contributes": {
     "configuration": {
-      "title": "ccpreview-vscode"
+      "title": "global-style-colors-vscode"
     },
     "snippets": [
       {

@@ -10,6 +10,6 @@
     "scope": "javascript,typescript",
     "prefix": "gSC",
     "body": ["gSC(\"$1\"),"],
-    "description": "Global Style Color String"
+    "description": "GS Color String"
   }
 }

@@ -97,7 +97,7 @@ export class Picker {
 
   private get languages() {
     return vscode.workspace
-      .getConfiguration("ccpreview-vscode")
+      .getConfiguration("global-style-colors-vscode")
       .get("languages") as Array<string>;
   }
 
